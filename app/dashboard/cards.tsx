@@ -11,7 +11,7 @@ export default function Cards() {
   const pathname = usePathname();
 
   return (
-    <Box sx={{ marginTop: 2, marginLeft: 2, height: "100vh", width: "83vw" }} p={1}>
+    <Box sx={{ marginTop: 2, marginLeft: 2, minHeight: "100vh", width: "80vw" }} p={1}>
       <Box
         sx={{
           display: "flex",

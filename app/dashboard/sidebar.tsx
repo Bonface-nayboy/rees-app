@@ -14,9 +14,9 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import LayersIcon from "@mui/icons-material/Layers";
 import Link from "next/link";
 import { ListItemButton, TextField, InputAdornment } from "@mui/material";
-import { AdminPanelSettings, Notifications, Search, ShowChart } from "@mui/icons-material";
+import { AdminPanelSettings, Analytics, Filter, Notifications, Search, ShowChart } from "@mui/icons-material";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const SidebarContainer = styled(Drawer)({
     width: drawerWidth,
@@ -34,9 +34,11 @@ const NAVIGATION = [
     { type: "header", title: "DiRa Analyzer", icon: <AdminPanelSettings />, link: "/" },
     { type: "item", title: "Dashboard", icon: <DashboardIcon />, link: "/" },
     { type: "search" },
-    { type: "item", title: "Charts", icon: <ShowChart />, link: "/charts" },
-    { type: "item", title: "Tables", icon: <DashboardIcon />, link: "/" },
-    { type: "item", title: "Notifications", icon: <Notifications />, link: "/" },
+    { type: "item", title: "Sales Forecusting Behaviour", icon: <ShowChart />, link: "/charts" },
+    { type: "item", title: "Inventory analysis", icon: <DashboardIcon />, link: "/" },
+    { type: "item", title: "Sales Fraud Detection", icon: <Filter />, link: "/" },
+    { type: "item", title: "Promotional Effectiveness", icon: <Notifications />, link: "/" },
+    { type: "item", title: "Customer Behaviour", icon: <Analytics />, link: "/" },
     { type: "divider" },
     { type: "header", title: "Analytics" },
     {

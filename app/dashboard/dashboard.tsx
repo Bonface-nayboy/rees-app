@@ -8,7 +8,7 @@ export default function Dashboard({
   children: React.ReactNode;
 }>) {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", }}>
       <Sidebar />
       {children}
     </Box>
