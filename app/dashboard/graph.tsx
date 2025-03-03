@@ -25,8 +25,8 @@ export default function Graph() {
         {year:"2024",sales1:80000},
     ]
   return (
-    <Box sx={{display:'flex',flexDirection:'row'}}>
-       <Card sx={{ maxWidth: 600, ml:0, mt: 3, p: 2 }}>
+    <Box sx={{display:'flex',justifyContent:"space-between"}}>
+       <Card sx={{ minWidth: 600, ml:0, mt: 3, p: 2 }}>
       <CardContent>
         <Typography variant="h6" textAlign="center" mb={2}>
           Sales Performance By Months of the year

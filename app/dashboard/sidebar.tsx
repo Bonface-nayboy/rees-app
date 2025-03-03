@@ -31,12 +31,12 @@ const SidebarContainer = styled(Drawer)({
 });
 
 const NAVIGATION = [
-    { type: "header", title: "AdminLTE 3", icon: <AdminPanelSettings />, link: "/dashboard" },
-    { type: "item", title: "Dashboard", icon: <DashboardIcon />, link: "/dashboard" },
+    { type: "header", title: "DiRa Analyzer", icon: <AdminPanelSettings />, link: "/" },
+    { type: "item", title: "Dashboard", icon: <DashboardIcon />, link: "/" },
     { type: "search" },
-    { type: "item", title: "Charts", icon: <ShowChart />, link: "/Charts" },
-    { type: "item", title: "Tables", icon: <DashboardIcon />, link: "/Tables" },
-    { type: "item", title: "Notifications", icon: <Notifications />, link: "/Notifications" },
+    { type: "item", title: "Charts", icon: <ShowChart />, link: "/charts" },
+    { type: "item", title: "Tables", icon: <DashboardIcon />, link: "/" },
+    { type: "item", title: "Notifications", icon: <Notifications />, link: "/" },
     { type: "divider" },
     { type: "header", title: "Analytics" },
     {
@@ -44,13 +44,13 @@ const NAVIGATION = [
         title: "Reports",
         icon: <BarChartIcon />,
         children: [
-            { title: "Sales", icon: <DescriptionIcon />, link: "/reports/sales" },
-            { title: "Purchases", icon: <DescriptionIcon />, link: "/reports/purchases" },
-            { title: "Stock", icon: <DescriptionIcon />, link: "/reports/stock" },
-            { title: "Traffic", icon: <DescriptionIcon />, link: "/reports/traffic" },
+            { title: "Sales", icon: <DescriptionIcon />, link: "/" },
+            { title: "Purchases", icon: <DescriptionIcon />, link: "/" },
+            { title: "Stock", icon: <DescriptionIcon />, link: "/" },
+            { title: "Traffic", icon: <DescriptionIcon />, link: "/" },
         ],
     },
-    { type: "item", title: "Integrations", icon: <LayersIcon />, link: "/integrations" },
+    { type: "item", title: "Integrations", icon: <LayersIcon />, link: "/" },
 ];
 
 export default function Sidebar() {
