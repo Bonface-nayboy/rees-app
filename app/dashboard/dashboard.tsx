@@ -1,6 +1,7 @@
-import { Box } from "@mui/material";
+import { Box, ThemeProvider } from "@mui/material";
 import React from "react";
 import Sidebar from "./sidebar";
+import themes from "@/src/theme";
 
 export default function Dashboard({
   children,
@@ -8,9 +9,11 @@ export default function Dashboard({
   children: React.ReactNode;
 }>) {
   return (
-    <Box sx={{ display: "flex", }}>
+    <ThemeProvider theme={themes}>
+    <Box sx={{ display: "flex", minHeight: "100vh" }} bgcolor="#f5f5f5">
       <Sidebar />
       {children}
     </Box>
+    </ThemeProvider>
   );
 }
