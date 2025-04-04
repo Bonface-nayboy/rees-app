@@ -1,6 +1,4 @@
-/* eslint-disable import/extensions */
-
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Box,
@@ -10,7 +8,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ColumnDef } from "@tanstack/react-table";
 import { DateTime } from "luxon";
 import {
@@ -169,9 +167,9 @@ function UsersPageData() {
   const [open, setOpen] = useState<boolean>(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [values, setValues] = useState<any>([]);
-  const [pageNumber, setPageNumber] = useState(0);
-  const [pageSize, setPageSize] = useState(5);
-  const [param, setParam] = useState("");
+  const [, setPageNumber] = useState(0);
+  const [, setPageSize] = useState(5);
+  const [, setParam] = useState("");
 
   const ItemsData = Items || [];
   const totalItems = Items.length || 0;
@@ -207,7 +205,7 @@ function UsersPageData() {
           </Typography>
         </>
       ),
-      onClick: (row: any) => router.push(`/items`),
+      onClick: () => router.push(`/items`),
     },
     {
       label: (

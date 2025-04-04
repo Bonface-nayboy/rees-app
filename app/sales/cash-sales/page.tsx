@@ -1,6 +1,6 @@
 import CashSales from "@/src/containers/sales/CashSales";
 import Header from "@/src/containers/sales/CashSales/Header";
-import { Box, Card } from "@mui/material";
+import { Card } from "@mui/material";
 import React from "react";
 
 function Home() {

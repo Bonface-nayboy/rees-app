@@ -67,9 +67,9 @@ export default function SalesTable({ handleReceivePayments, setTotals }: any) {
   });
 
   const { fields, append, remove } = useFieldArray({ control, name: "items" });
-  const [searchIndex, setSearchIndex] = useState(null);
+  const [searchIndex, setSearchIndex] = useState<any>(null);
 
-  const updateRow = (index, item) => {
+  const updateRow = (index:any, item:any) => {
     setValue(`items.${index}.code`, item.code);
     setValue(`items.${index}.name`, item.name);
     setValue(`items.${index}.price`, item.price);
@@ -78,14 +78,14 @@ export default function SalesTable({ handleReceivePayments, setTotals }: any) {
     setSearchIndex(null);
   };
 
-  const handleQtyChange = (index) => {
+  const handleQtyChange = (index:any) => {
     const qty = watch(`items.${index}.qty`) || 1;
     const price = watch(`items.${index}.price`) || 0;
     const tax = watch(`items.${index}.tax`) || 0;
     setValue(`items.${index}.total`, qty * price + tax);
   };
 
-  const handleKeyPress = (e, index) => {
+  const handleKeyPress = (e:any) => {
     if (e.key === "Enter") {
       e.preventDefault();
       append({ code: "", name: "", qty: 1, price: 0, tax: 0, total: 0 });
@@ -102,7 +102,7 @@ export default function SalesTable({ handleReceivePayments, setTotals }: any) {
     setTotals(totalSales);
   }, [totalSales, setTotals]);
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event:any) => {
       if (searchIndex !== null && !event.target.closest(".MuiTextField-root")) {
         setSearchIndex(null);
       }
@@ -147,7 +147,7 @@ export default function SalesTable({ handleReceivePayments, setTotals }: any) {
                     variant="standard"
                     {...register(`items.${index}.name`)}
                     onFocus={() => setSearchIndex(index)}
-                    onKeyPress={(e) => handleKeyPress(e, index)}
+                    onKeyPress={(e) => handleKeyPress(e)}
                   />
                   {searchIndex === index && (
                     <Box
@@ -179,7 +179,7 @@ export default function SalesTable({ handleReceivePayments, setTotals }: any) {
                     variant="standard"
                     {...register(`items.${index}.qty`, { valueAsNumber: true })}
                     onBlur={() => handleQtyChange(index)}
-                    onKeyPress={(e) => handleKeyPress(e, index)}
+                    onKeyPress={(e) => handleKeyPress(e)}
                   />
                 </TableCell>
                 <TableCell>

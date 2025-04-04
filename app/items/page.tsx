@@ -1,7 +1,7 @@
 "use client";
 
 import ItemsPageData from "@/src/containers/Items";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
 
 function Items() {

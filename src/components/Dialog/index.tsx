@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme, styled } from "@mui/material/styles";
 import Slide, { SlideProps } from "@mui/material/Slide";
-// import { Form as FormikForm } from "formik";
+import { Form as FormikForm } from "formik";
 import { Typography } from "@mui/material";
 
 const StyledAppBar = styled(AppBar)(
@@ -17,12 +17,12 @@ const StyledAppBar = styled(AppBar)(
   background-color: "#fff;
   padding: 16px 24px;
   boxShadow: 0 0 1px 0 rgba(0,0,0,0.16);
-`
+`,
 );
 
 const Transition = React.forwardRef(function Transition(
   props: SlideProps & { children: React.ReactElement<any, any> },
-  ref: React.Ref<unknown>
+  ref: React.Ref<unknown>,
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -115,11 +115,27 @@ function Modal({
           paddingBottom: 1,
         }}
       >
-        <ModalChildren
-          modalHeader={modalHeader}
-          modalContent={modalContent}
-          modalActions={modalActions}
-        />
+        {form ? (
+          <FormikForm
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
+          >
+            <ModalChildren
+              modalHeader={modalHeader}
+              modalContent={modalContent}
+              modalActions={modalActions}
+            />
+          </FormikForm>
+        ) : (
+          <ModalChildren
+            modalHeader={modalHeader}
+            modalContent={modalContent}
+            modalActions={modalActions}
+          />
+        )}
       </Box>
     </Dialog>
   );

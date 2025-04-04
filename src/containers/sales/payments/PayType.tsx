@@ -25,7 +25,7 @@ function PayType({ totals, onPaymentChange }: PayTypeProps) {
   // Notify parent when values change
   useEffect(() => {
     onPaymentChange(totalPaid, remaining);
-  }, [totalPaid]);
+  }, [totalPaid, onPaymentChange,remaining]);
 
   const handleCheckboxChange = (index: number) => {
     setMethods((prev) =>
@@ -44,7 +44,7 @@ function PayType({ totals, onPaymentChange }: PayTypeProps) {
 
   const handleAmountChange = (index: number, value: string) => {
     // Remove commas and parse to float
-    let raw = value.replace(/,/g, "");
+    const raw = value.replace(/,/g, "");
     let amount = parseFloat(raw) || 0;
 
     setMethods((prev) => {

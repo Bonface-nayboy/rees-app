@@ -9,10 +9,8 @@ interface tableHeaderProps {
   actionText?: string;
   handleOpen?: () => void;
   handleSearch: (
-    // eslint-disable-next-line no-unused-vars
     e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
-  // eslint-disable-next-line no-unused-vars
   setSearchTerm: (value: string) => void;
 }
 function TableHeader({

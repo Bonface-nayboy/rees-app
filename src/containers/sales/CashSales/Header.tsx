@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 
 function Header() {
-  const [users, setUsers] = useState([
+  const [users,] = useState([
     { code: "0001", name: "User Test" },
     { code: "0002", name: "John Doe" },
     { code: "0003", name: "Jane Smith" },

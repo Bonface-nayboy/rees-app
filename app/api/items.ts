@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Simulate database save (replace with actual DB logic)
       res.status(201).json({ message: "Item created successfully", name, category });
     } catch (error) {
-      res.status(500).json({ error: "Failed to create item" });
+      res.status(500).json({ error});
     }
   } else {
     res.setHeader("Allow", ["POST"]);
