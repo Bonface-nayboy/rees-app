@@ -62,6 +62,7 @@ interface ReusableTableProps {
   handleOpen?: () => void;
   enableMenu?: boolean;
   buttonText: string;
+  getRowKey?: (item: any, index: number) => string;
 }
 
 function ReusableTable({
@@ -81,6 +82,7 @@ function ReusableTable({
   tableError,
   enableMenu = true,
   buttonText,
+  getRowKey,
 }: ReusableTableProps) {
   const [data, setData] = useState<any[]>([]);
   const [offset, setOffset] = useState<number>(0);
@@ -95,6 +97,7 @@ function ReusableTable({
   const table = useReactTable({
     data: data ?? [],
     columns: columns ?? [],
+    getRowId: (row: any, index: number) => row.id || index,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -138,7 +141,7 @@ function ReusableTable({
 
   const handleMenuOpen = (
     event: React.MouseEvent<HTMLButtonElement>,
-    row: any,
+    row: any
   ) => {
     setMenuAnchor(event.currentTarget);
     setSelectedRow(row);
@@ -151,7 +154,7 @@ function ReusableTable({
   };
 
   const handleSearch = (
-    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     if (e.key === "Enter") {
       setParam(globalFilter);
@@ -199,7 +202,7 @@ function ReusableTable({
                       </TableSortLabel>
                     )}
                   </TableCell>
-                )),
+                ))
               )}
               {actions.length > 0 && <TableCell>Actions</TableCell>}
             </TableRow>
@@ -225,7 +228,7 @@ function ReusableTable({
                             height={20}
                           />
                         </TableCell>
-                      ),
+                      )
                     )}
                   </TableRow>
                 ))}
@@ -235,15 +238,13 @@ function ReusableTable({
             table?.getRowModel()?.rows?.length > 0 ? (
               table?.getRowModel().rows.map((row) => (
                 <StyledTableRow
-                  key={row?.original?.sub || row?.original?.id}
-                  selected={selectedRows?.has(
-                    row?.original?.sub || row?.original?.id,
-                  )}
+                  key={getRowKey?.(row, row.index) ?? `${row.index}`}
+                  selected={selectedRows?.has(getRowKey?.(row, row.index) ?? `${row.index}`)}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={selectedRows?.has(
-                        row?.original?.sub || row?.original?.id,
+                        row?.original?.sub || row?.original?.id
                       )}
                       onChange={() =>
                         handleSelectRow(row?.original?.sub || row?.original?.id)
@@ -254,7 +255,7 @@ function ReusableTable({
                     <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </TableCell> // Corrected line
                   ))}

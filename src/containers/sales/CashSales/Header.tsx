@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 
 function Header() {
-  const [users,] = useState([
+  const [users] = useState([
     { code: "0001", name: "User Test" },
     { code: "0002", name: "John Doe" },
     { code: "0003", name: "Jane Smith" },
@@ -145,7 +145,13 @@ function Header() {
                 borderTop: "1px solid lightgray",
               }}
             >
-              <Button fullWidth variant="outlined" color="primary" endIcon={<Add />} onClick={handleAddUser}>
+              <Button
+                fullWidth
+                variant="outlined"
+                color="primary"
+                endIcon={<Add />}
+                onClick={handleAddUser}
+              >
                 Create New User
               </Button>
             </Box>
@@ -153,11 +159,18 @@ function Header() {
         </Box>
 
         <Box display="flex" alignItems="center" gap={2}>
-          <TextField label="Order Number" value={orderNumber} InputProps={{ readOnly: true }} />
-
+          {" "}
           <Tooltip title="View Active Orders">
-            <Typography variant="h1" color="success">🛒</Typography>
+            <Typography variant="h1" color="success">
+              🛒
+            </Typography>
           </Tooltip>
+          <TextField
+            variant="filled"
+            label="Order Number"
+            value={orderNumber}
+            InputProps={{ readOnly: true }}
+          />
         </Box>
       </Box>
     </Box>
