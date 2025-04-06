@@ -6,9 +6,9 @@ import { Box, styled, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import Dialog from "@/src/components/Dialog";
-import ConstituencyForm from "./forms";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import WardForm from "./WardForm";
 
 const StyledDialog = styled(Dialog)(() => ({
   "& .MuiDialogContent-root": {
@@ -31,7 +31,7 @@ const columns = [
   { header: "Region", accessorKey: "region" },
 ];
 
-function Constituencies({ countyId }: { countyId: string }) {
+function Wards({ id }: { id: string }) {
   const router = useRouter()
   const actions = [
     {
@@ -49,7 +49,7 @@ function Constituencies({ countyId }: { countyId: string }) {
         </>
       ),
       onClick: (row: any) => {
-        router.push(`/counties/${countyId}/constituencies/${row?._id}`);
+        router.push(`/counties/${id}/constituencies/${row?._id}`);
       },
     },
     {
@@ -91,9 +91,9 @@ function Constituencies({ countyId }: { countyId: string }) {
   };
 
   useEffect(() => {
-    const fetchConstituencies = async () => {
+    const fetchWards = async () => {
       try {
-        const response = await fetch(`/api/constituencies/${countyId}`);
+        const response = await fetch(`/api/wards/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch constituencies");
         }
@@ -104,10 +104,10 @@ function Constituencies({ countyId }: { countyId: string }) {
       }
     };
 
-    if (countyId) {
-      fetchConstituencies();
+    if (id) {
+        fetchWards();
     }
-  }, [countyId]);
+  }, [id]);
   return (
     <Box width="100%">
       <ReusableTable
@@ -122,11 +122,11 @@ function Constituencies({ countyId }: { countyId: string }) {
         totalCount={constituencies.length}
         setValues={() => {}}
         setParam={() => {}}
-        subTitle="Constituencies"
+        subTitle="Wards"
         handleOpen={handleOpen}
         tableError={error}
         enableMenu={true}
-        buttonText="Add New Constituency"
+        buttonText="Add New Ward"
         getRowKey={(constituencies: any) => constituencies._id}
       />
 
@@ -136,7 +136,7 @@ function Constituencies({ countyId }: { countyId: string }) {
           handleClose={handleClose}
           maxWidth="md"
           modalContent={
-            <ConstituencyForm handleClose={handleClose} countyId={countyId} />
+            <WardForm handleClose={handleClose} constituencyId={id} />
           }
         />
       </Box>
@@ -144,4 +144,4 @@ function Constituencies({ countyId }: { countyId: string }) {
   );
 }
 
-export default Constituencies;
+export default Wards;
