@@ -4,10 +4,18 @@ import { NavigateNext } from "@mui/icons-material";
 import { Box, Breadcrumbs, Link, Stack, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+
+export interface countytype {
+  id: string;
+  name: string;
+}
 
 function Home() {
   const params = useParams();
   const countyId = params.county as string;
+  const [countyData, setCountyData] = useState<countytype>();
   const breadcrumbs = [
     <Link
       underline="hover"
@@ -25,12 +33,24 @@ function Home() {
       href={`/counties/${countyId}`}
       onClick={() => {}}
     >
-      {countyId}
+      {countyData?.name}
     </Link>,
-    <Typography key="3" sx={{ color: "text.primary" }}>
-      Nairobi
-    </Typography>,
   ];
+
+  useEffect(() => {
+    const fetchCountyById = async (id: string) => {
+      try {
+        const res = await fetch(`/api/counties/${id}`);
+        if (!res.ok) throw new Error("Failed to fetch county");
+        const data = await res.json();
+        setCountyData(data);
+      } catch (error) {
+        console.error("Error fetching county: ", error);
+      }
+    };
+
+    fetchCountyById(countyId);
+  }, [countyId]);
   return (
     <Box width="100%">
       <Stack spacing={2} sx={{ padding: 2 }}>
@@ -41,7 +61,7 @@ function Home() {
           {breadcrumbs}
         </Breadcrumbs>
       </Stack>
-      <Constituencies countyId={countyId}/>
+      <Constituencies countyId={countyId} />
     </Box>
   );
 }

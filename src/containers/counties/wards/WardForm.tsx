@@ -126,7 +126,7 @@ function WardForm({ handleClose, item,constituencyId }: AddRolesModalProps) {
                   <TextField
                     id="name"
                     name="name"
-                    label="Constituency Name *"
+                    label="Ward Name *"
                     fullWidth
                     helperText={errors.name || ""}
                     value={values.name}
