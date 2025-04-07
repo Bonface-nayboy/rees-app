@@ -1,7 +1,7 @@
 "use client";
 import Constituencies from "@/src/containers/counties/Constituencies";
 import { NavigateNext } from "@mui/icons-material";
-import { Box, Breadcrumbs, Link, Stack, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Link, Stack } from "@mui/material";
 import { useParams } from "next/navigation";
 import React from "react";
 import { useState } from "react";
