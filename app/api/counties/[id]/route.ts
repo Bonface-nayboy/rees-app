@@ -7,21 +7,27 @@ import mongoose from "mongoose";
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } = await params;
 
   try {
     await connectToDatabase();
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return NextResponse.json({ message: "Invalid county ID" }, { status: 400 });
+      return NextResponse.json(
+        { message: "Invalid county ID" },
+        { status: 400 }
+      );
     }
 
     const county = await County.findById(id);
 
     if (!county) {
-      return NextResponse.json({ message: "County not found" }, { status: 404 });
+      return NextResponse.json(
+        { message: "County not found" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json(county);
